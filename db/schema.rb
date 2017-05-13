@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513033007) do
+ActiveRecord::Schema.define(version: 20170513034445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20170513033007) do
     t.date     "datepublished"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "user_id"
+    t.integer  "career_id"
+    t.integer  "school_id"
+    t.index ["career_id"], name: "index_documents_on_career_id", using: :btree
+    t.index ["school_id"], name: "index_documents_on_school_id", using: :btree
+    t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
   end
 
   create_table "documents_tags", force: :cascade do |t|
@@ -62,6 +68,9 @@ ActiveRecord::Schema.define(version: 20170513033007) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "documents", "careers"
+  add_foreign_key "documents", "schools"
+  add_foreign_key "documents", "users"
   add_foreign_key "documents_tags", "documents"
   add_foreign_key "documents_tags", "tags"
 end
