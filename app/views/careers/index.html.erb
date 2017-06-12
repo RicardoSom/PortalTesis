@@ -1,0 +1,17 @@
+<h1>Carreras ingresadas</h1>
+
+<table>
+ <tr>
+   <td>namecareer</td>
+ </tr>
+<% @careers.each do |career| %>
+<tr>
+  <td><%= career.namecareer %></td>
+  <td><%= link_to "Editar", edit_career_path(career) %></td>
+  <td> <%= link_to "Mostrar", career %></td>
+  <td><%= link_to "Eliminar", career, method: :delete, data: { confirm: 'Esta seguro?'} %></td>
+</tr>
+<% end %>
+</table>
+
+<%= link_to "Ingresar carrera", new_career_path %>
