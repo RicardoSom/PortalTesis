@@ -1,0 +1,29 @@
+<h1>Carreras ingresadas</h1>
+
+<table>
+ <tr>
+   <td>name</td>
+ </tr>
+ <tr>
+   <td>lastname</td>
+ </tr>
+ <tr>
+   <td>rut</td>
+ </tr>
+ <tr>
+   <td>email</td>
+ </tr>
+<% @users.each do |user| %>
+<tr>
+  <td><%= user.name %></td>
+  <td><%= user.lastname %></td>
+  <td><%= user.rut %></td>
+  <td><%= user.email %></td>
+  <td><%= link_to "Editar", edit_user_path(user) %></td>
+  <td> <%= link_to "Mostrar", user %></td>
+  <td><%= link_to "Eliminar", user, method: :delete, data: { confirm: 'Esta seguro?'} %></td>
+</tr>
+<% end %>
+</table>
+
+<%= link_to "Ingresar usuario", new_user_path %>

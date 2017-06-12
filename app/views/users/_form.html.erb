@@ -1,0 +1,19 @@
+<%= form_for(@user) do |f| %>
+  <p>
+  <%= f.label :name %> <br>
+  <%= f.text_field :name %>
+  </p>
+  <p>
+  <%= f.label :lastname %> <br>
+  <%= f.text_field :lastname %>
+  </p>
+  <p>
+  <%= f.label :rut %> <br>
+  <%= f.number_field :rut %>
+  </p>
+  <p>
+  <%= f.label :email %> <br>
+  <%= f.text_field :email %>
+  </p>
+  <%= f.submit "Crear usuario" %> <br>
+<% end %>
