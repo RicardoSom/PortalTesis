@@ -1,2 +1,7 @@
-<h1>Schools#_form</h1>
-<p>Find me in app/views/schools/_form.html.erb</p>
+<%= form_for(@school) do |f| %>
+  <p>
+  <%= f.label :nameschool %> <br>
+  <%= f.text_field :nameschool %>
+  </p>
+  <%= f.submit "Crear escuela" %> <br>
+<% end %>

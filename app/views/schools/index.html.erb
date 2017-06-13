@@ -1,2 +1,17 @@
-<h1>Schools#index</h1>
-<p>Find me in app/views/schools/index.html.erb</p>
+<h1>Escuelas ingresadas</h1>
+
+<table>
+ <tr>
+   <td>nameschool</td>
+ </tr>
+<% @schools.each do |school| %>
+<tr>
+  <td><%= school.nameschool %></td>
+  <td><%= link_to "Editar", edit_school_path(school) %></td>
+  <td> <%= link_to "Mostrar", school %></td>
+  <td><%= link_to "Eliminar", school, method: :delete, data: { confirm: 'Esta seguro?'} %></td>
+</tr>
+<% end %>
+</table>
+
+<%= link_to "Ingresar carrera", new_school_path %>
