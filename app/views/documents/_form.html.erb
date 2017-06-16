@@ -1,0 +1,42 @@
+<%= form_for(@document) do |f| %>
+  <p>
+  <%= f.label :title %> <br>
+  <%= f.text_field :title%>
+  </p>
+  <p>
+  <%= f.label :abstract %> <br>
+  <%= f.text_field :abstract %>
+  </p>
+  <p>
+  <%= f.label :namestudent %> <br>
+  <%= f.text_field :namestudent %>
+  </p>
+  <p>
+  <%= f.label :lastnamestudent %> <br>
+  <%= f.text_field :lastnamestudent %>
+  </p>
+  <p>
+  <%= f.label :nameprofessor %> <br>
+  <%= f.text_field :nameprofessor %>
+  </p>
+  <p>
+  <%= f.label :lastnameprofessor %> <br>
+  <%= f.text_field :lastnameprofessor %>
+  </p>
+  <p>
+  <%= f.label :datepublished %> <br>
+  <%= f.date_field :datepublished %>
+  <p>
+  <%= f.label :user_id %><br>
+      <%= f.select('user_id', User.all.collect { |c| [c.name, c.id] }, {include_blank: true}) %>
+  </p>
+  <p>
+  <%= f.label :career_id %><br>
+      <%= f.select('career_id', Career.all.collect { |c| [c.namecareer, c.id] }, {include_blank: true}) %>
+  </p>
+  <p>
+  <%= f.label :school_id %><br>
+      <%= f.select('school_id', School.all.collect { |c| [c.nameschool, c.id] }, {include_blank: true}) %>
+  </p>
+  <%= f.submit "Crear documento" %> <br>
+<% end %>
