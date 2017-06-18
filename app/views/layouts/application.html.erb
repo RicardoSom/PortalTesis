@@ -9,6 +9,27 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <ul class="nav nav-pills">
+          <li>
+            <%= link_to "Inicio", root_path %>
+          </li>
+          <li>
+            <%= link_to "Documentos", documents_path %>
+          </li>
+          <li>
+            <%= link_to "Usuario", users_path %>
+          </li>
+          <li>
+            <%= link_to "Escuela", schools_path %>
+          </li>
+          <li>
+            <%= link_to "Carrera", careers_path %>
+          </li>
+        </ul>
+      </div>
+   </nav>
     <%= yield %>
   </body>
 </html>
