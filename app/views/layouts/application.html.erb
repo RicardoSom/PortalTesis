@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
     <nav class="navbar navbar-inverse" role="navigation">
       <div class="container">
         <ul class="nav nav-pills">
@@ -19,13 +25,19 @@
             <%= link_to "Documentos", documents_path %>
           </li>
           <li>
-            <%= link_to "Usuario", users_path %>
+            <%= link_to "Registrar usuario", new_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "Iniciar sesion", user_session_path %>
           </li>
           <li>
             <%= link_to "Escuela", schools_path %>
           </li>
           <li>
             <%= link_to "Carrera", careers_path %>
+          </li>
+          <li>
+            <%= link_to "Usuario", users_path %>
           </li>
         </ul>
       </div>

@@ -4,20 +4,15 @@
  <tr>
    <th>name</th>
    <th>lastname</th>
-   <th>rut</th>
    <th>email</th>
  </tr>
 <% @users.each do |user| %>
 <tr>
   <td><%= user.name %></td>
   <td><%= user.lastname %></td>
-  <td><%= user.rut %></td>
   <td><%= user.email %></td>
-  <td><%= link_to "Editar", edit_user_path(user) %></td>
-  <td> <%= link_to "Mostrar", user %></td>
-  <td><%= link_to "Eliminar", user, method: :delete, data: { confirm: 'Esta seguro?'} %></td>
+  <td><%= link_to "Editar", edit_user_registration_path %></td>
+  <td> <%= link_to "Mostrar", user_path %></td>
 </tr>
 <% end %>
 </table>
-
-<%= link_to "Ingresar usuario", new_user_path %>
