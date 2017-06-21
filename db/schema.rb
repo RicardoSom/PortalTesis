@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621162610) do
+ActiveRecord::Schema.define(version: 20170621214520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,21 +25,15 @@ ActiveRecord::Schema.define(version: 20170621162610) do
   create_table "documents", force: :cascade do |t|
     t.string   "title"
     t.text     "abstract"
-    t.string   "namestudent"
-    t.string   "nameprofessor"
-    t.string   "lastnameprofessor"
     t.date     "datepublished"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.integer  "user_id"
-    t.integer  "career_id"
-    t.integer  "school_id"
-    t.string   "lastnamestudent"
-    t.string   "filepdf_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "attachment"
-    t.index ["career_id"], name: "index_documents_on_career_id", using: :btree
-    t.index ["school_id"], name: "index_documents_on_school_id", using: :btree
-    t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
+    t.integer  "user_id"
+    t.integer  "professor_id"
+    t.integer  "student_id"
+    t.string   "rut_student"
+    t.string   "rut_professor"
   end
 
   create_table "documents_tags", force: :cascade do |t|
@@ -49,6 +43,15 @@ ActiveRecord::Schema.define(version: 20170621162610) do
     t.datetime "updated_at",  null: false
     t.index ["document_id"], name: "index_documents_tags_on_document_id", using: :btree
     t.index ["tag_id"], name: "index_documents_tags_on_tag_id", using: :btree
+  end
+
+  create_table "professors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "rut"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "schools", force: :cascade do |t|
@@ -93,8 +96,8 @@ ActiveRecord::Schema.define(version: 20170621162610) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "documents", "careers"
-  add_foreign_key "documents", "schools"
+  add_foreign_key "documents", "professors"
+  add_foreign_key "documents", "students"
   add_foreign_key "documents", "users"
   add_foreign_key "documents_tags", "documents"
   add_foreign_key "documents_tags", "tags"

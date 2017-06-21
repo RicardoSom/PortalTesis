@@ -1,0 +1,21 @@
+<h1>Paso 2</h1>
+
+<%= form_for(@professor, :html => {:role => 'form'}) do |f| %>
+    <% if @professor.errors.any? %>
+        <%= pluralize(@professor.errors.count, "error") %>
+
+        <% @professor.errors.full_messages.each do |actual| %>
+            <%= actual %>
+        <% end %>
+    <% end %>
+
+    <p>
+      <%= f.label :rut %> <br>
+      <%= f.text_field :rut %>
+    </p>
+
+
+    <%= f.submit %>
+<% end %>
+
+<%= link_to 'Volver', root_path %>

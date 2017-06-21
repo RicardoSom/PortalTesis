@@ -1,3 +1,4 @@
+require 'sepa_api'
 class DocumentsController < ApplicationController
   def index
     @documents = Document.all
@@ -8,7 +9,29 @@ class DocumentsController < ApplicationController
   end
 
   def create
+    rut_student = params['document']['rut_student']
+    student = Student.find_by_rut(rut_student)
+    rut_professor = params['document']['rut_professor']
+    professor = Professor.find_by_rut(rut_professor)
+    sepa = SepaApi.new
+    if student!=nil
+      student = student
+    else
+      student = sepa.getEstudiante(rut_student)
+      student.save
+    end
+
+    if professor!=nil
+      professor = professor
+    else
+      professor = sepa.getDocente(rut_professor)
+      professor.save
+    end
+
     @document = Document.new(document_params)
+    @document.professor_id = professor.id
+    @document.student_id = student.id
+
     if @document.save
       redirect_to root_path
     else
@@ -45,6 +68,6 @@ class DocumentsController < ApplicationController
 
   private
   def document_params
-    params.require(:document).permit(:title, :abstract, :namestudent, :nameprofessor, :lastnameprofessor, :datepublished, :lastnamestudent, :user_id, :career_id, :school_id, :attachment)
+    params.require(:document).permit(:title, :abstract, :datepublished,  :user_id,  :attachment,:rut_professor, :rut_student)
   end
   end

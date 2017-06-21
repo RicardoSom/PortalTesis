@@ -1,8 +1,8 @@
 class SepaApi
   URL='https://sepa.utem.cl/rest/api/v1'
-
-
   AUTH = {username: 'g0MqAOTcqZ', password: 'a451ba629a384c3238fa709dddf0363d'}
+
+
   def getEstudiante(rut)
     salida = Student.new
     if rut!=nil
@@ -44,6 +44,23 @@ class SepaApi
         Career.create(codigo: codigo.to_i, namecareer: respuesta['nombre'])
       end
     end
+  end
+
+  def getDocente(rut)
+    salida  = Professor.new
+    uri = '/academia/docentes/'
+    if rut!= nil
+      respuesta = HTTParty.get(URI.encode(URL+uri+rut.to_s), basic_auth: AUTH)
+        case respuesta.response.code.to_i
+          when 200
+            salida.name = respuesta['nombres']
+            salida.last_name = respuesta['apellidos']
+            salida.email = respuesta['email']
+            salida.rut = respuesta['rut']
+            salida.save
+        end
+    end
+    return salida
   end
 
 
