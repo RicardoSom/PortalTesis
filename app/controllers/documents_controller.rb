@@ -45,6 +45,6 @@ class DocumentsController < ApplicationController
 
   private
   def document_params
-    params.require(:document).permit(:title, :abstract, :namestudent, :nameprofessor, :lastnameprofessor, :datepublished, :lastnamestudent, :user_id, :career_id, :school_id)
+    params.require(:document).permit(:title, :abstract, :namestudent, :nameprofessor, :lastnameprofessor, :datepublished, :lastnamestudent, :user_id, :career_id, :school_id, :attachment)
   end
   end
