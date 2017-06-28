@@ -1,21 +1,23 @@
-<div class="container">
-  <p>
-    Nombre
+<table class="table table-bordered table-striped">
+<tr>
+  <td>
+    nombre
     <%= @student.name%>
-  </p>
-  <p>
+  </td>
+  <td>
 apellidos
     <%= @student.last_name%>
-  </p>
-  <p>
+  </td>
+  <td>
 rut
     <%= @student.rut%>
-  </p>
-  <p>
+  </td>
+  <td>
     email<%= @student.email%>
-  </p>
-<p>
+  </td>
+<td>
 carrera    <%= @student.career.namecareer%>
-  </p>
+  </td>
+</tr>
 
-</div>
+</table>

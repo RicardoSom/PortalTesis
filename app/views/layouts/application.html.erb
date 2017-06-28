@@ -24,9 +24,11 @@
           <li>
             <%= link_to "Documentos", documents_path %>
           </li>
+          <% if (user = current_user).present? %>
           <li>
             <%= link_to "Registrar usuario", new_user_registration_path %>
           </li>
+          <% end %>
           <li>
             <%= link_to "Iniciar sesion", user_session_path %>
           </li>
@@ -38,6 +40,12 @@
           </li>
           <li>
             <%= link_to "Usuario", users_path %>
+          </li>
+          <li>
+            <%= link_to "Estudiantes", students_path %>
+          </li>
+          <li>
+            <%= link_to "Profesores", professors_path %>
           </li>
         </ul>
       </div>

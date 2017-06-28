@@ -1,0 +1,17 @@
+<div class="jumbotron">
+<h1>Estudiantes ingresados</h1>
+</div>
+<table class="table table-bordered table-striped">
+ <tr>
+   <td>nombre estudiante</td>
+ </tr>
+<% @students.each do |student| %>
+<tr>
+  <td><%= student.name %></td>
+  <td> <%= link_to "Mostrar", student %></td>
+  <td><%= link_to "Eliminar", student, method: :delete, data: { confirm: 'Esta seguro?'} %></td>
+</tr>
+<% end %>
+</table>
+
+<%= link_to "Ingresar estudiante", new_student_path %>

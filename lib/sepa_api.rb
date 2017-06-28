@@ -16,6 +16,8 @@ class SepaApi
           salida.email = respuesta['email']
           carrera= getCarrera(rut)
           salida.career_id = carrera[:carrera_id]
+        when 404
+          salida = Student.new
       end
     end
     return salida
@@ -57,11 +59,11 @@ class SepaApi
             salida.last_name = respuesta['apellidos']
             salida.email = respuesta['email']
             salida.rut = respuesta['rut']
-            salida.save
+          when 404
+          salida = nil
         end
     end
-    return salida
+      return salida
   end
 
-
-end
+  end

@@ -3,7 +3,7 @@ class StudentsController < ApplicationController
 
 
   def index
-
+    @students = Student.all
   end
 
   def nuevo
@@ -13,22 +13,39 @@ class StudentsController < ApplicationController
   def crear
     sepa = SepaApi.new()
     rut = params['student']['rut']
-    salida = Student.find_by_rut(rut)
-    if salida != nil
-      @student = salida
+    @student = sepa.getEstudiante(rut)
+    if @student != nil
+        if Student.find_by_rut(@student.rut) == nil
+          respond_to do |format|
+            if @student.save
+              format.html{redirect_to student_path(@student), notice: 'Guardado exitosamente en base de datos'}
+            else
+              format.html{render :nuevo}
+            end
+          end
+        else
+          respond_to do |format|
+            @student = Student.find_by_rut(@student.rut)
+            format.html{redirect_to student_path(@student), notice: 'Ya existe dicho estudiante'}
+          end
+        end
     else
-      @student = sepa.getEstudiante(rut)
+        respond_to do |format|
+          format.html{redirect_to new_student_path(@student), notice: 'Estudiante no encontrado en dirdoc'}
+        end
     end
-    respond_to do |format|
-      if @student.save
-          format.html{redirect_to student_path(@student), notice: 'Creado estudiante con exito'}
-      else
-        format.html{render :nuevo}
-      end
-    end
-  end
+end
 
   def show
     @student = Student.find(params[:id])
   end
 end
+
+  def destroy
+    @student = Student.find(params[:id])
+    if @student.destroy
+      redirect_to root_path
+    else
+      "Error al eliminar la carrera"
+    end
+  end

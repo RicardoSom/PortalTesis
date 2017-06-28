@@ -1,0 +1,22 @@
+<table class="table table-bordered table-striped">
+<tr>
+  <%if @professor!=nil %>
+  <td>
+    nombre
+    <%= @professor.name%>
+  </td>
+  <td>
+apellidos
+    <%= @professor.last_name%>
+  </td>
+  <td>
+rut
+    <%= @professor.rut%>
+  </td>
+  <td>
+    email<%= @professor.email%>
+  </td>
+  <% end %>
+</tr>
+
+</table>

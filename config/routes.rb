@@ -13,9 +13,12 @@ Rails.application.routes.draw do
   get  '/students/:id', to: 'students#show', as: 'student'
   get 'students/' , to: 'students#index', as: 'students'
   post 'students/' , to:'students#crear'
+  delete  '/students/:id', to: 'students#destroy', as: 'destroy_student'
 
   get 'professors/new', to: 'professors#nuevo', as: 'new_professor'
   get 'professors', to: 'professors#index', as: 'professors'
   post 'professors/' , to:'professors#crear'
+  get  '/professors/:id', to: 'professors#show', as: 'professor'
+  delete  '/professors/:id', to: 'professors#destroy', as: 'destroy_professor'
 
 end
