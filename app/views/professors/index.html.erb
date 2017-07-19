@@ -9,6 +9,7 @@
 <tr>
   <td><%= professor.name %></td>
   <td><%= professor.last_name %></td>
+  
   <td> <%= link_to "Mostrar", professor %></td>
   <td><%= link_to "Eliminar", professor, method: :delete, data: { confirm: 'Esta seguro?'} %></td>
 </tr>

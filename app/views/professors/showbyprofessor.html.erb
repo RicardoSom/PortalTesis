@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h1>Documentos ingresados</h1>
+  <h1>Documentos ingresados por profesor</h1>
 </div>
 <% if (user = current_user).present? %>
 <p><%= link_to "Cerrar sesion", destroy_user_session_path, method: :delete %></p>
@@ -11,7 +11,7 @@
   <td>Nombre Docente</td>
   <td>Acciones</td>
   </tr>
-<% @documents.each do |document| %>
+<% @professors.each do |document| %>
 <tr>
   <td><%= document.title %></td>
   <%if document.professor!=nil %>

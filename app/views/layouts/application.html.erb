@@ -1,7 +1,10 @@
 <!DOCTYPE html>
+
 <html>
+
   <head>
-    <title>PortalTesis</title>
+    <meta charset="utf-8">
+    <title>Portal Tesis CFING</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -15,41 +18,85 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    <nav class="navbar navbar-inverse" role="navigation">
-      <div class="container">
-        <ul class="nav nav-pills">
-          <li>
-            <%= link_to "Inicio", root_path %>
-          </li>
-          <li>
-            <%= link_to "Documentos", documents_path %>
-          </li>
-          <% if (user = current_user).present? %>
-          <li>
-            <%= link_to "Registrar usuario", new_user_registration_path %>
-          </li>
-          <% end %>
-          <li>
-            <%= link_to "Iniciar sesion", user_session_path %>
-          </li>
-          <li>
-            <%= link_to "Escuela", schools_path %>
-          </li>
-          <li>
-            <%= link_to "Carrera", careers_path %>
-          </li>
-          <li>
-            <%= link_to "Usuario", users_path %>
-          </li>
-          <li>
-            <%= link_to "Estudiantes", students_path %>
-          </li>
-          <li>
-            <%= link_to "Profesores", professors_path %>
-          </li>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <img id="Imagen_UTEM" src="http://vtte.utem.cl/wp-content/uploads/sites/2/2017/03/marca-utem-horizontal.jpg">
+        </div>
+      </div>
+    </div>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Portal Tesis", root_path %></li>
+          <li class="divider-vertical"></li>
+          <li><%= link_to "Búsqueda por académico", professors_path %></li>
+          <li class="divider-vertical"></li>
+          <li><%= link_to "Búsqueda por carrera", careers_path %></li>
+          <li class="divider-vertical"></li>
+          <li><%= link_to "Información usuarios", users_path %></li>
+          <li class="divider-vertical"></li>
+          <li><%= link_to "Búsqueda por estudiantes", students_path %></li>
+          <li class="divider-vertical"></li>
+          <li><%= link_to "Iniciar sesión", user_session_path %></li>
+          <li class="divider-vertical"></li>
+          <li><%= link_to "Registrar usuario", new_user_registration_path %></li>
+          <li class="divider-vertical"></li>
+          <li><% if (user = current_user).present? %><li><%= link_to "Registrar usuario", new_user_registration_path %></li><% end %></li>
         </ul>
       </div>
-   </nav>
-    <%= yield %>
+
+    </div>
+  </nav>
+
+  <%= yield %>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 col-sm-6 footerleft ">
+          <div class="logofooter">Portal Tesis</div>
+          <p></p>
+          <p>Sitio diseñado y desarrollado por el Centro de Facultad de Ingeniería</p>
+          <p>Teléfono: (+56 2) 2272 2347</p>
+          <p>Dirección: Av. José Pedro Alessandri 1242, Ñuñoa</p>
+          <p>Correo electrónico: cfing@utem.cl</p>
+        </div>
+
+        <div class="col-md-4 col-sm-6 paddingtop-bottom">
+          <div class="logofooter">Sitios de interés</div>
+          <ul class="footer-ul">
+            <li><a target="_blank" href="https://dirdoc.utem.cl/">Dirdoc</a></li>
+            <li><a target="_blank" href="http://reko.utem.cl/portal/">Reko</a></li>
+            <li><a target="_blank" href="https://www.utem.cl/">Universidad Tecnológica Metropolitana</a></li>
+            <li><a target="_blank" href="http://fing.utem.cl/">Centro de Facultad de Ingeniería</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 col-sm-6 paddingtop-bottom">
+          <div class="logofooter">Redes sociales</div>
+          <ul class="footer-ul">
+            <li><a target="_blank" href="https://www.facebook.com/utem.cl">Facebook UTEM</a></li>
+            <li><a target="_blank" href="https://twitter.com/utem?lang=es">Twitter UTEM</a></li>
+            <li><a target="_blank" href="https://www.instagram.com/utem.cl/">Instagram UTEM</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <div class="copyright">
+    <div class="container">
+      <div class="col-md-12">
+        <p>2017 © UTEM - Todos los derechos reservados</p>
+      </div>
+    </div>
+  </div>
+
   </body>
+
 </html>

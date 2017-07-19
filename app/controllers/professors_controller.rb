@@ -7,6 +7,7 @@ class ProfessorsController < ApplicationController
 
   def nuevo
       @professor = Professor.new
+      motivo_recibido = params[:motivo]
   end
 
 
@@ -40,6 +41,9 @@ class ProfessorsController < ApplicationController
     @professor = Professor.find(params[:id])
   end
 
+  def mostrarbyprofessor
+    @professors = Professor.where(params[:motivo_recibido])
+  end
 
 
   def destroy

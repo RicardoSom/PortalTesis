@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h1>Documentos ingresados</h1>
+  <h1>Documentos ingresados por profesor</h1>
 </div>
 <% if (user = current_user).present? %>
 <p><%= link_to "Cerrar sesion", destroy_user_session_path, method: :delete %></p>
@@ -11,22 +11,20 @@
   <td>Nombre Docente</td>
   <td>Acciones</td>
   </tr>
-<% @documents.each do |document| %>
+<% @professors.each do |profesor| %>
 <tr>
-  <td><%= document.title %></td>
-  <%if document.professor!=nil %>
-  <td><%= document.student.name.to_s+' '+document.student.last_name.to_s  %></td>
-  <td><%= document.professor.name.to_s+' '+document.professor.last_name.to_s %></td>
-  <% end%>
-
-  <td><%= link_to "Editar", edit_document_path(document) %></td>
+  <td><%= profesor.name %></td>
+  <td><%= profesor.documents.each do |d| %></td>
+  <td><%= d.title %></td>
+  <td><%= d.abstract %></td>
   <td> <%= link_to "Mostrar", document %></td>
   <% if (user = current_user).present?  %>
   <td><%= link_to "Eliminar", document, method: :delete, data: { confirm: 'Esta seguro?'},class: "btn btn-danger" %></td>
   <% end %>
   <td><%= link_to "Ver documento", document.attachment_url %></td>
 </tr>
-<% end %>
+  <% end %>
+<% end%>
 </table>
 <% if (user = current_user).present?  %>
 <%= link_to "Ingresar documento", new_document_path %>

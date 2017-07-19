@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
   get 'users/:id', to: 'users#show', as: 'usuario'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'documents#index'
+  root 'pages#home'
 
   get '/students/new', to: 'students#nuevo', as: 'new_student'
   get  '/students/:id', to: 'students#show', as: 'student'
@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   get 'professors/new', to: 'professors#nuevo', as: 'new_professor'
   get 'professors', to: 'professors#index', as: 'professors'
   post 'professors/' , to:'professors#crear'
-  get  '/professors/:id', to: 'professors#show', as: 'professor'
+
   delete  '/professors/:id', to: 'professors#destroy', as: 'destroy_professor'
 
+  get  '/professors/:motivo', to: 'professors#mostrarbyprofessor', as: 'show_by_professor'
+  get  '/professors/:id', to: 'professors#show', as: 'professor'
+
+  get "/pages/:page" => "pages#home"
 end
