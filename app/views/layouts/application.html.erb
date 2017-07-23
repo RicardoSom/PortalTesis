@@ -41,9 +41,9 @@
           <li class="divider-vertical"></li>
           <li><%= link_to "Búsqueda por estudiantes", students_path %></li>
           <li class="divider-vertical"></li>
-          <li><%= link_to "Iniciar sesión", user_session_path %></li>
-          <li class="divider-vertical"></li>
-          <li><%= link_to "Registrar usuario", new_user_registration_path %></li>
+          <li><% if (user = current_user).present? %><li>
+          <%= link_to "Cerrar sesion", destroy_user_session_path, method: :delete %></li><li><% else %>
+          <%= link_to "Iniciar sesión", user_session_path %><% end %></li>
           <li class="divider-vertical"></li>
           <li><% if (user = current_user).present? %><li><%= link_to "Registrar usuario", new_user_registration_path %></li><% end %></li>
         </ul>

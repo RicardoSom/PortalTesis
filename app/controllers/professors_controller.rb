@@ -2,7 +2,12 @@ require 'sepa_api'
 class ProfessorsController < ApplicationController
 
   def index
-    @professors = Professor.all
+    termino = params[:termino]
+    if termino == nil
+      @professors = Professor.all
+    else
+      @professors = Professor.search(termino)
+    end
   end
 
   def nuevo
@@ -39,12 +44,8 @@ class ProfessorsController < ApplicationController
 
   def show
     @professor = Professor.find(params[:id])
-  end
 
-  def mostrarbyprofessor
-    @professors = Professor.where(params[:motivo_recibido])
   end
-
 
   def destroy
     @professor = Professor.find(params[:id])

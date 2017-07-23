@@ -3,7 +3,12 @@ class StudentsController < ApplicationController
 
 
   def index
-    @students = Student.all
+    termino = params[:termino]
+    if termino == nil
+      @students = Student.all
+    else
+      @students = Student.search(termino)
+    end
   end
 
   def nuevo

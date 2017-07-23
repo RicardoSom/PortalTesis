@@ -9,9 +9,9 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    rut_student = params['document']['rut_student']
+    rut_student = params['document']['rut_student']+'-'+params['document']['student_v']
     student = Student.find_by_rut(rut_student)
-    rut_professor = params['document']['rut_professor']
+    rut_professor = params['document']['rut_professor']+'-'+params['document']['professor_v']
     professor = Professor.find_by_rut(rut_professor)
     sepa = SepaApi.new
     if student!=nil
@@ -25,7 +25,10 @@ class DocumentsController < ApplicationController
       professor = professor
     else
       professor = sepa.getDocente(rut_professor)
-      professor.save
+      if professor!=nil
+        professor.save
+      end
+
     end
 
     @document = Document.new(document_params)
@@ -46,7 +49,7 @@ class DocumentsController < ApplicationController
   def update
     @document = Document.find(params[:id])
     if @document.update(document_params)
-      redirect_to root_path
+      redirect_to document
     else
       "Error al actualizar"
     end
@@ -68,6 +71,6 @@ class DocumentsController < ApplicationController
 
   private
   def document_params
-    params.require(:document).permit(:title, :abstract, :datepublished,  :user_id,  :attachment,:rut_professor, :rut_student)
+    params.require(:document).permit(:title, :abstract,  :user_id,  :attachment,:rut_professor, :rut_student, :student_v, :professor_v)
   end
   end

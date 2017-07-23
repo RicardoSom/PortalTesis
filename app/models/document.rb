@@ -6,12 +6,4 @@ class Document < ApplicationRecord
     belongs_to :student
     validates :title, presence: true
     validates :abstract, presence: true
-    validate :comprobar_fecha
-
-
-    def comprobar_fecha
-      if datepublished.present? and datepublished > Date.today
-        errors.add(:datepublished, "La fecha no puede ser mayor a la de hoy")
-      end
-    end
 end

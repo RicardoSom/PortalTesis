@@ -1,6 +1,10 @@
 <div class="jumbotron">
 <h1>Estudiantes ingresados</h1>
 </div>
+<%= form_tag "", :method => "get" do %>
+<%= text_field_tag :termino%>
+<%= submit_tag "buscar"%>
+<% end %>
 <table class="table table-bordered table-striped">
  <tr>
    <td>nombre estudiante</td>

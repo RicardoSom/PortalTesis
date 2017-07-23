@@ -20,8 +20,6 @@ Rails.application.routes.draw do
   post 'professors/' , to:'professors#crear'
 
   delete  '/professors/:id', to: 'professors#destroy', as: 'destroy_professor'
-
-  get  '/professors/:motivo', to: 'professors#mostrarbyprofessor', as: 'show_by_professor'
   get  '/professors/:id', to: 'professors#show', as: 'professor'
 
   get "/pages/:page" => "pages#home"

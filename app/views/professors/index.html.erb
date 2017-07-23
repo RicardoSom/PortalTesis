@@ -5,11 +5,15 @@
  <tr>
    <td>nombre profesor</td>
  </tr>
+<%= form_tag "", :method => "get" do %>
+<%= text_field_tag :termino%>
+<%= submit_tag "buscar"%>
+<% end %>
 <% @professors.each do |professor| %>
 <tr>
   <td><%= professor.name %></td>
   <td><%= professor.last_name %></td>
-  
+
   <td> <%= link_to "Mostrar", professor %></td>
   <td><%= link_to "Eliminar", professor, method: :delete, data: { confirm: 'Esta seguro?'} %></td>
 </tr>
