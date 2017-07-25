@@ -7,7 +7,9 @@
 <% end %>
 <table class="table table-bordered table-striped ">
  <tr>
-   <td>nombre profesor</td>
+   <th>Nombres profesor</th>
+   <th>Apellidos profesor</th>
+   <th>Mostrar</th>
  </tr>
 
 <% @professors.each do |professor| %>
@@ -15,10 +17,9 @@
   <td><%= professor.name %></td>
   <td><%= professor.last_name %></td>
 
-  <td> <%= link_to "Mostrar", professor %></td>
-  <td><%= link_to "Eliminar", professor, method: :delete, data: { confirm: 'Esta seguro?'} %></td>
+  <td> <%= link_to "Mostrar", professor , class: "btn btn-primary" %></td>
 </tr>
 <% end %>
 </table>
 
-<%= link_to "Ingresar docente", new_professor_path %>
+<%= link_to "Ingresar docente", new_professor_path , class: "btn btn-default" %>

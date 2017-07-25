@@ -1,30 +1,29 @@
 <table class="table table-bordered table-striped">
 <tr>
   <%if @professor!=nil %>
-  <td>
-    nombre
+  <th>Nombres profesor :
     <%= @professor.name%>
-  </td>
-  <td>
-apellidos
+  </th>
+  <th>Apellidos profesor :
     <%= @professor.last_name%>
-  </td>
-  <td>
-rut
+  </th>
+  <th>Rut profesor :
     <%= @professor.rut%>
-  </td>
-  <td>
+  </th>
+  <th>Email :
     email<%= @professor.email%>
-  </td>
+  </th>
   <% end %>
 </tr>
 </table>
 <table class='table table-bordered table-striped'>
  <tr>
-  <td>Nombre Documento</td>
-  <td>Nombre Estudiante</td>
-  <td>Nombre Docente</td>
-  <td>Acciones</td>
+  <th>Nombre Documento</th>
+  <th>Nombre Estudiante</th>
+  <th>Nombre Docente</th>
+  <th>Editar</th>
+  <th>Mostrar</th>
+  <th>Ver documento</th>
   </tr>
 <% @professor.documents.each do |document| %>
 <tr>
@@ -34,12 +33,12 @@ rut
   <td><%= document.professor.name.to_s+' '+document.professor.last_name.to_s %></td>
   <% end%>
 
-  <td><%= link_to "Editar", edit_document_path(document) %></td>
-  <td> <%= link_to "Mostrar", document %></td>
+  <td><%= link_to "Editar", edit_document_path(document) , class: "btn btn-info" %></td>
+  <td> <%= link_to "Mostrar informacion documento", document , class: "btn btn-primary" %></td>
   <% if (user = current_user).present?  %>
   <td><%= link_to "Eliminar", document, method: :delete, data: { confirm: 'Esta seguro?'},class: "btn btn-danger" %></td>
   <% end %>
-  <td><%= link_to "Ver documento", document.attachment_url %></td>
+  <td><%= link_to "Ver documento", document.attachment_url , class: "btn btn-success" %></td>
 </tr>
 <% end %>
 </table>

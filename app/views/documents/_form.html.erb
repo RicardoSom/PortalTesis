@@ -1,28 +1,31 @@
 <%= form_for @document, html: { multipart: true } do |f| %>
-  <% @document.errors.full_messages.each do |m|  %>
-    <div class="be-red"></div>
+<% @document.errors.full_messages.each do |m|  %>
   <% end  %>
-  <p>
-  <%= f.label :Titulo %> <br>
-  <%= f.text_field :title, :maxlength => 512, :size => 50 %>
-  </p>
-  <p>
-  <%= f.label :abstract %> <br>
-  <%= f.text_area :abstract, size: "49x10", :maxlength => 1024 %>
-  </p>
-  <p>
-  <%= f.label :Rut_Estudiante %> <br>
-  <%= f.number_field :rut_student, :max => 99999999, :min => 0 %> - <%= f.text_field :student_v, :maxlength => 1, :min => 0 %>
-  </p>
-  <p>
-  <%= f.label :rut_docente %> <br>
-  <%= f.number_field :rut_professor, :max => 99999999, :min => 0 %> - <%= f.text_field :professor_v, :maxlength => 1, :min => 0 %>
-  </p>
+<form role="form">
+  <div class="container">
+    <%= f.label :Titulo %> <br>
+    <%= f.text_field :title, :maxlength => 512, :size => 50, class: "form-control" %>
+  </div>
+    <div class="container">
+      <%= f.label :abstract %> <br>
+      <%= f.text_area :abstract, size: "49x10", :maxlength => 1024, class: "form-control" %>
+    </div>
+    <div class="container">
+    <%= f.label :Rut_Estudiante %> <br>
+    <%= f.number_field :rut_student, :max => 99999999, :min => 0 %> - <%= f.text_field :student_v, :maxlength => 1, :min => 0 %>
+    </div>
+    <div class="container">
+    <%= f.label :rut_docente %> <br>
+    <%= f.number_field :rut_professor, :max => 99999999, :min => 0 %> - <%= f.text_field :professor_v, :maxlength => 1, :min => 0 %>
+    </div>
   <%= f.hidden_field :user_id, :value => current_user.id %>
-  </p>
-  <p>
-    <%= f.label :attachment %>
-      <%= f.file_field :attachment, :accept => 'application/pdf' %>
-  </p>
-  <%= f.submit "Crear documento", class: "btn btn-danger" %> <br>
+
+<div class="container">
+  <%= f.label :attachment %>
+  <%= f.file_field :attachment, :accept => 'application/pdf' %> <br>
+</div>
+<div class="container">
+<%= f.submit "Crear documento", class: "btn btn-default" %> <br>
+</div>
+</form>
 <% end %>

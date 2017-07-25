@@ -1,22 +1,26 @@
 <table class="table table-bordered table-striped">
 <tr>
+  <th>Nombre</th>
+  <th>Apellidos</th>
+  <th>Rut</th>
+  <th>Email</th>
+  <th>Carrera</th>
+</tr>
+<tr>
   <td>
-    nombre
     <%= @student.name%>
   </td>
   <td>
-apellidos
     <%= @student.last_name%>
   </td>
   <td>
-rut
     <%= @student.rut%>
   </td>
   <td>
     email<%= @student.email%>
   </td>
-<td>
-carrera    <%= @student.career.namecareer%>
+  <td>
+    <%= @student.career.namecareer%>
   </td>
 </tr>
 

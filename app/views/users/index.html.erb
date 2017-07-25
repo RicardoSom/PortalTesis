@@ -4,18 +4,20 @@
 
 
 <table class="table table-bordered table-striped">
- <tr>
-   <th>name</th>
-   <th>lastname</th>
-   <th>email</th>
- </tr>
-<% @users.each do |user| %>
-<tr>
-  <td><%= user.name %></td>
-  <td><%= user.lastname %></td>
-  <td><%= user.email %></td>
-  <td><%= link_to "Editar", edit_user_registration_path %></td>
-  <td> <%= link_to "Mostrar", usuario_path(user) %></td>
-</tr>
-<% end %>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Email</th>
+    <th>Editar</th>
+    <th>Mostrar</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.lastname %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to "Editar", edit_user_registration_path , class: "btn btn-primary" %></td>
+    <td> <%= link_to "Mostrar", usuario_path(user) , class: "btn btn-info"  %></td>
+  </tr>
+  <% end %>
 </table>

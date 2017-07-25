@@ -1,13 +1,11 @@
 <div class="container">
-  <p>
-    <%= @user.name%>
-  </p>
-  <p>
-    <%= @user.lastname%>
-  </p>
-  <p>
-    <%= @user.email%>
-  </p>
+  <table class="table table-bordered table-striped">
+    <tr>
+    <th><%= @user.name%></th>
+    <th><%= @user.lastname%></th>
+    <th><%= @user.email%></th>
+    </tr>
+  </table>
 </div>
 
-<%= link_to "voler", users_path %>
+<%= link_to "volver", users_path , class: "btn btn-default" %>

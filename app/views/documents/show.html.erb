@@ -1,10 +1,18 @@
 <div class="container">
-  <p>
-    <%= @document.title%> <<br>
-    <%= @document.abstract%>
-    <%= @document.user.name %>
-    <%= @document.created_at.strftime('%d/%m/%Y') %>
-  </p>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>Titulo</th>
+      <th>Abstract</th>
+      <th>Usuario creador</th>
+      <th>Fecha de creacion</th>
+    </tr>
+    <tr>
+      <td><%= @document.title%></td>
+      <td><%= @document.abstract%></td>
+      <td><%= @document.user.name %></td>
+      <td><%= @document.created_at.strftime('%d/%m/%Y') %></td>
+    </tr>
+  </table>
 </div>
 
 <%= link_to "voler", documents_path %>
