@@ -11,6 +11,9 @@
   <th>Nombre Docente</th>
   <th>Editar</th>
   <th>Mostrar informacion documento</th>
+  <% if (user = current_user).present?  %>
+  <th>Eliminar</th>
+  <% end %>
   <th>Ver documento</th>
   </tr>
 <% @documents.each do |document| %>
