@@ -10,17 +10,19 @@ class DocumentsController < ApplicationController
 
   def create
     rut_student = params['document']['rut_student']+'-'+params['document']['student_v']
-    student = Student.find_by_rut(rut_student)
     rut_professor = params['document']['rut_professor']+'-'+params['document']['professor_v']
-    professor = Professor.find_by_rut(rut_professor)
+    
     sepa = SepaApi.new
+    student = sepa.getEstudiante(rut_student)
+    student = Student.find_by_rut(student.rut)
     if student!=nil
       student = student
     else
       student = sepa.getEstudiante(rut_student)
       student.save
     end
-
+    professor = sepa.getDocente(rut_professor)
+    professor = Professor.find_by_rut(professor.rut)
     if professor!=nil
       professor = professor
     else

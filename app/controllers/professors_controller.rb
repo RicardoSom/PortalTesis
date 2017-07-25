@@ -12,7 +12,6 @@ class ProfessorsController < ApplicationController
 
   def nuevo
       @professor = Professor.new
-      motivo_recibido = params[:motivo]
   end
 
 
