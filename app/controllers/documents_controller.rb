@@ -11,7 +11,7 @@ class DocumentsController < ApplicationController
   def create
     rut_student = params['document']['rut_student']+'-'+params['document']['student_v']
     rut_professor = params['document']['rut_professor']+'-'+params['document']['professor_v']
-    
+
     sepa = SepaApi.new
     student = sepa.getEstudiante(rut_student)
     student = Student.find_by_rut(student.rut)
@@ -19,10 +19,14 @@ class DocumentsController < ApplicationController
       student = student
     else
       student = sepa.getEstudiante(rut_student)
+      if student == nil
+        "Error al ingresar el rut"
+      else
       student.save
+      end
     end
     professor = sepa.getDocente(rut_professor)
-    professor = Professor.find_by_rut(professor.rut)
+    #professor = Professor.find_by_rut(professor.rut)
     if professor!=nil
       professor = professor
     else
@@ -32,16 +36,23 @@ class DocumentsController < ApplicationController
       end
 
     end
-
+    if professor!=nil and student!=nil
     @document = Document.new(document_params)
     @document.professor_id = professor.id
     @document.student_id = student.id
-
-    if @document.save
-      redirect_to root_path
+    @document.save
+    redirect_to root_path
     else
-      "Error al crear documento"
+      respond_to do |format|
+          format.html{redirect_to root_path(@document), notice: 'No se pudo guardar el documento'}
+      end
     end
+
+    #if @document.save
+    #  redirect_to root_path
+    #else
+    #  "Error al crear documento"
+    #end
   end
 
   def edit
