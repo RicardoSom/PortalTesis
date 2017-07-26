@@ -17,7 +17,7 @@ class SepaApi
           carrera= getCarrera(rut)
           salida.career_id = carrera[:carrera_id]
         when 404
-          salida = Student.new
+          salida = nil
       end
     end
     return salida

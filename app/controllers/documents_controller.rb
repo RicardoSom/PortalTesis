@@ -15,10 +15,13 @@ class DocumentsController < ApplicationController
     sepa = SepaApi.new
     student = sepa.getEstudiante(rut_student)
     student = Student.find_by_rut(student.rut)
-    professor = sepa.getDocente(rut_professor)
-    professor = Professor.find_by_rut(professor.rut)
 
-    
+    professor = sepa.getDocente(rut_professor)
+    if professor != nil
+    professor = Professor.find_by_rut(professor.rut)
+    end
+
+
     if professor!=nil and student!=nil
     @document = Document.new(document_params)
     @document.professor_id = professor.id
